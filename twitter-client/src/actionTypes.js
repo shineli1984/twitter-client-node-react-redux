@@ -1,0 +1,2 @@
+export const GET_TWEETS_BY_KETWORDS='getTweetsByKeyword'
+export const GET_TWEETS_BY_USERNAME='getTweetsByUsername'
