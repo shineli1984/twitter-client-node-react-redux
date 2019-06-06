@@ -32,9 +32,19 @@ app.get('/tweets/:screen_name', function (req, res) {
         , count: 5
     }, function (err, data, ) {
         res.json(data);
+
     })
 });
 
+app.get('/tweets/favorites/list/:screen_name', function (req, res) {
+    T.get('favorites/list', {
+        q: req.params.screen_name
+        , count: 200
+    }, function (err, data, ) {
+        res.json(data);
+        console.log(data)
+    })
+});
 app.post('/tweets/favorites/create/:id', function (req, res) {
     T.post('/favorites/create', {
         id: req.params.id
