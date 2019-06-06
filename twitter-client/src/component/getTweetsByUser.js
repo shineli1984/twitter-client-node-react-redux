@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {fetchTweetsByUsername} from "../actionCreators";
+import {fetchTweetsByUsername,fetchFavorateList} from "../actionCreators";
 import { connect } from "react-redux";
 import Button from "./button";
 import Input from "./input";
@@ -13,8 +13,11 @@ class GetTweetsByUser extends Component {
     }
 
     submit=()=>{
-        const url ='http://localhost:5000/tweets/' + this.state.screen_name;
-        this.props.dispatch(fetchTweetsByUsername(url))
+        const url1 ='http://localhost:5000/tweets/' + this.state.screen_name;
+        const url2 ='http://localhost:5000/tweets/favorites/list/' + this.state.screen_name;
+        this.props.dispatch(fetchTweetsByUsername(url1))
+        this.props.dispatch(fetchFavorateList(url2))
+
     };
 
     onChange=(e)=> this.setState({[e.target.name]:e.target.value});
