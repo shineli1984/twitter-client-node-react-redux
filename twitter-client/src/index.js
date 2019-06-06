@@ -5,13 +5,19 @@ import App from './App';
 import {createStore, applyMiddleware} from 'redux';
 import thunk from "redux-thunk"
 import {Provider} from 'react-redux';
-import {showTweets} from "./reducer";
+import {showTweets,favList} from "./reducer";
+import { combineReducers } from 'redux'
+
+let reducer=combineReducers({
+    showTweets,
+    favList
 
 
+})
 
-let store = createStore(showTweets, applyMiddleware(thunk));
+let store = createStore(reducer, applyMiddleware(thunk));
 
-
+console.log(store.getState());
 
 ReactDOM.render(
     <Provider store={store}>
