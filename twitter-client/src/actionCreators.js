@@ -1,4 +1,4 @@
-import {GET_TWEETS_BY_KETWORDS,GET_TWEETS_BY_USERNAME} from'./actionTypes'
+import {GET_TWEETS_BY_KETWORDS,GET_TWEETS_BY_USERNAME,GET_Fav_List} from'./actionTypes'
 
 
 export const getTweetsByKeyword=(data)=>({
@@ -13,6 +13,11 @@ export const getTweetsByUsername=(data)=>({
 
 })
 
+export const getFavorateList=(data)=>({
+    type:GET_Fav_List,
+    payload:data
+
+})
 
 export const fetchTweetsByKeyword= (url)=>{
     return (dispatch)=>{
@@ -30,6 +35,16 @@ export const fetchTweetsByUsername= (url)=>{
             .then( res=>res.json() )
             .then( data=>{
                 dispatch( getTweetsByUsername(data) )
+            } )
+    }
+}
+
+export const fetchFavorateList= (url)=>{
+    return (dispatch)=>{
+        fetch( url )
+            .then( res=>res.json() )
+            .then( data=>{
+                dispatch( getFavorateList(data) )
             } )
     }
 }
