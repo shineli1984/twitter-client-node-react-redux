@@ -14,8 +14,8 @@ class Search extends Component {
 
     submit=()=>{
         const url ='http://localhost:5000/tweets/search/' + this.state.search;
-        this.props.dispatch(fetchTweetsByKeyword(url))
-    }
+        this.props.fetchTweetsByKeyword(url)
+    };
 
     onChange=(e)=> this.setState({[e.target.name]:e.target.value});
 
@@ -31,6 +31,14 @@ class Search extends Component {
     }
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+
+        fetchTweetsByKeyword:(url)=>dispatch( fetchTweetsByKeyword(url)),
+
+    }
+};
 
 
-export default connect()(Search);
+
+export default connect(null,mapDispatchToProps)(Search);

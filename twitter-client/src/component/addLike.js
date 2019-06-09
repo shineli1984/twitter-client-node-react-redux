@@ -6,13 +6,13 @@ const AddLike =(props)=>{
 
     const toggle=async ()=>{
 
-        let url1='';
+        let actionURL='';
         fav?
-            url1 = 'http://localhost:5000/tweets/favorites/destroy/':
-            url1 = 'http://localhost:5000/tweets/favorites/create/';
+            actionURL= 'http://localhost:5000/tweets/favorites/destroy/':
+            actionURL = 'http://localhost:5000/tweets/favorites/create/';
 
-          url1=url1+id;
-           await fetch(url1, {
+        actionURL=actionURL+id;
+           await fetch(actionURL, {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -23,8 +23,8 @@ const AddLike =(props)=>{
                 })
             })
 
-                 const url2 ='http://localhost:5000/tweets/favorites/list/' + screen_name;
-                 props.dispatch(fetchFavorateList(url2))
+                 const favListURL ='http://localhost:5000/tweets/favorites/list/' + screen_name;
+                 props.fetchFavorateList(favListURL)
         };
 
 
@@ -38,4 +38,13 @@ const AddLike =(props)=>{
     };
 
 
-export default connect()(AddLike);
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        fetchFavorateList:(url)=> dispatch(fetchFavorateList(url))
+    }
+};
+
+
+
+export default connect(null,mapDispatchToProps )(AddLike);

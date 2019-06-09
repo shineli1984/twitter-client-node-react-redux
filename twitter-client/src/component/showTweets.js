@@ -10,7 +10,6 @@ const ShowTweets=(props)=>{
     }
 
     props.tweets.map((tweet)=>{ tweet.fav=props.favList.some((fav)=>isfav(fav,tweet))})
-    console.log(  props.tweets)
 
         return (
 

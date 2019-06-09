@@ -9,7 +9,7 @@ const Button=(props)=>{
         <button onClick={props.onclick}>{props.text}</button>
     );
 
-}
+};
 
 
 

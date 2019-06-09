@@ -13,10 +13,10 @@ class GetTweetsByUser extends Component {
     }
 
     submit=()=>{
-        const url1 ='http://localhost:5000/tweets/' + this.state.screen_name;
-        const url2 ='http://localhost:5000/tweets/favorites/list/' + this.state.screen_name;
-        this.props.dispatch(fetchTweetsByUsername(url1))
-        this.props.dispatch(fetchFavorateList(url2))
+        const tweetsURL ='http://localhost:5000/tweets/' + this.state.screen_name;
+        const favListURL ='http://localhost:5000/tweets/favorites/list/' + this.state.screen_name;
+        this.props.fetchTweetsByUsername(tweetsURL);
+        this.props.fetchFavorateList(favListURL);
 
     };
 
@@ -40,5 +40,14 @@ class GetTweetsByUser extends Component {
 
 GetTweetsByUser.propTypes = {};
 
-export default connect()(GetTweetsByUser);
+
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        fetchTweetsByUsername:(url)=>dispatch( fetchTweetsByUsername(url)),
+        fetchFavorateList:(url)=> dispatch(fetchFavorateList(url))
+    }
+}
+
+export default connect(null,mapDispatchToProps)(GetTweetsByUser);
 
