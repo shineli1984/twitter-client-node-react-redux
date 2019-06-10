@@ -1,3 +1,4 @@
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -18,7 +19,7 @@ let reducer=combineReducers({
 let store = createStore(reducer, applyMiddleware(thunk));
 
 console.log(store.getState());
-
+console.log(`${process.env.REACT_APP_BASE_URL}tweets/`)
 ReactDOM.render(
     <Provider store={store}>
     <App />

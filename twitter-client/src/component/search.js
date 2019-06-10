@@ -13,8 +13,8 @@ class Search extends Component {
     }
 
     submit=()=>{
-        const url ='http://localhost:5000/tweets/search/' + this.state.search;
-        this.props.fetchTweetsByKeyword(url)
+        const searchApiURL=`${process.env.REACT_APP_BASE_URL}tweets/search/${this.state.search}`;
+        this.props.fetchTweetsByKeyword(searchApiURL)
     };
 
     onChange=(e)=> this.setState({[e.target.name]:e.target.value});

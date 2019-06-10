@@ -23,7 +23,7 @@ const AddLike =(props)=>{
                 })
             })
 
-                 const favListURL ='http://localhost:5000/tweets/favorites/list/' + screen_name;
+                 const favListURL =`${process.env.REACT_APP_BASE_URL}tweets/favorites/list/${screen_name}`;
                  props.fetchFavorateList(favListURL)
         };
 

@@ -13,8 +13,9 @@ class GetTweetsByUser extends Component {
     }
 
     submit=()=>{
-        const tweetsURL ='http://localhost:5000/tweets/' + this.state.screen_name;
-        const favListURL ='http://localhost:5000/tweets/favorites/list/' + this.state.screen_name;
+
+        const tweetsURL =`${process.env.REACT_APP_BASE_URL}tweets/${this.state.screen_name}`;
+        const favListURL =`${process.env.REACT_APP_BASE_URL}tweets/favorites/list/${this.state.screen_name}`;
         this.props.fetchTweetsByUsername(tweetsURL);
         this.props.fetchFavorateList(favListURL);
 

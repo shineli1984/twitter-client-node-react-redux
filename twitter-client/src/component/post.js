@@ -12,10 +12,10 @@ class Post extends Component {
     }
 
     submit=()=> {
-        const url = 'http://localhost:5000/comment/'
+        const postTweeturl =`${process.env.REACT_APP_BASE_URL}comment/`;
 
 
-        fetch(url, {
+        fetch(postTweeturl, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

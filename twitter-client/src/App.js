@@ -5,6 +5,7 @@ import Post from "./component/post";
 import Search from "./component/search";
 
 function App() {
+
   return (
     <div className="App">
         <Post/>
